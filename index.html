@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jumping Game</title>
+    <title>Rialo Jump Game</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -157,6 +157,10 @@
                       alt="Character"
                       className="w-full h-full object-contain"
                       style={{ imageRendering: 'crisp-edges' }}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.parentElement.innerHTML = '<div class="w-full h-full bg-blue-500 rounded-lg border-2 border-blue-700 flex items-center justify-center text-2xl">?</div>';
+                      }}
                     />
                   </div>
 
@@ -185,7 +189,7 @@
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                       <div className="bg-white p-8 rounded-xl text-center shadow-2xl">
                         <h2 className="text-4xl font-bold mb-4 text-gray-800">
-                          {gameOver ? '🎮 Game Over!' : '🎯 Jump Game'}
+                          {gameOver ? '🎮 Game Over!' : '🎯 Rialo Jump Game'}
                         </h2>
                         {gameOver && (
                           <p className="text-2xl mb-4 text-gray-600">Score: {score}</p>
@@ -194,10 +198,10 @@
                           onClick={startGame}
                           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-xl transition-colors"
                         >
-                          {gameOver ? 'Main Lagi' : 'Mulai Game'}
+                          {gameOver ? 'Play Again' : 'Start Game'}
                         </button>
                         <p className="mt-4 text-gray-600">
-                          Tekan SPASI atau Klik untuk lompat
+                          Press SPACE or Click to jump
                         </p>
                       </div>
                     </div>
@@ -205,9 +209,9 @@
                 </div>
 
                 <div className="mt-4 text-center text-gray-700 bg-white p-4 rounded-lg shadow">
-                  <p className="font-semibold">Cara Main:</p>
-                  <p>Tekan <span className="bg-gray-200 px-2 py-1 rounded">SPASI</span> atau <span className="bg-gray-200 px-2 py-1 rounded">KLIK</span> untuk lompat</p>
-                  <p className="text-sm mt-2 text-gray-600">Hindari rintangan dan kumpulkan skor sebanyak-banyaknya!</p>
+                  <p className="font-semibold">How to Play:</p>
+                  <p>Press <span className="bg-gray-200 px-2 py-1 rounded">SPACE</span> or <span className="bg-gray-200 px-2 py-1 rounded">CLICK</span> to jump</p>
+                  <p className="text-sm mt-2 text-gray-600">Avoid obstacles and collect as many points as possible!</p>
                 </div>
               </div>
             </div>
